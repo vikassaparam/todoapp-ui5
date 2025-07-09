@@ -1,0 +1,92 @@
+[
+    {
+      "id": 1,
+      "title": "Complete SAP UI5 Beginner Project 1",
+      "description": "Ensure Simple Product Viewer is fully functional and responsive.",
+      "completed": true,
+      "priority": "High",
+      "dueDate": "2025-07-01",
+      "category": "Learning"
+    },
+    {
+      "id": 2,
+      "title": "Plan Project 2: To-Do App",
+      "description": "Break down tasks, review UI5 controls for lists and forms.",
+      "completed": false,
+      "priority": "High",
+      "dueDate": "2025-07-07",
+      "category": "Planning"
+    },
+    {
+      "id": 3,
+      "title": "Buy Groceries",
+      "description": "Milk, eggs, bread, vegetables.",
+      "completed": false,
+      "priority": "Medium",
+      "dueDate": "2025-07-08",
+      "category": "Personal"
+    },
+    {
+      "id": 4,
+      "title": "Team Meeting Preparation",
+      "description": "Prepare slides for quarterly review meeting with stakeholders.",
+      "completed": false,
+      "priority": "High",
+      "dueDate": "2025-07-09",
+      "category": "Work"
+    },
+    {
+      "id": 5,
+      "title": "Complete UI5 Documentation",
+      "description": "Finish reading SAP UI5 developer guide chapters 5-8.",
+      "completed": true,
+      "priority": "Medium",
+      "dueDate": "2025-07-05",
+      "category": "Learning"
+    },
+    {
+      "id": 6,
+      "title": "Gym Workout",
+      "description": "Complete cardio and strength training session.",
+      "completed": false,
+      "priority": "Low",
+      "dueDate": "2025-07-07",
+      "category": "Personal"
+    },
+    {
+      "id": 7,
+      "title": "Code Review",
+      "description": "Review pull requests for the new feature implementation.",
+      "completed": false,
+      "priority": "High",
+      "dueDate": "2025-07-08",
+      "category": "Work"
+    },
+    {
+      "id": 8,
+      "title": "Book Doctor Appointment",
+      "description": "Schedule annual health checkup with family physician.",
+      "completed": true,
+      "priority": "Medium",
+      "dueDate": "2025-07-06",
+      "category": "Personal"
+    },
+    {
+      "id": 9,
+      "title": "Update Resume",
+      "description": "Add recent projects and skills to professional resume.",
+      "completed": false,
+      "priority": "Low",
+      "dueDate": "2025-07-15",
+      "category": "Work"
+    },
+    {
+      "id": 10,
+      "title": "Pay Monthly Bills",
+      "description": "Electricity, water, internet, and phone bills.",
+      "completed": false,
+      "priority": "High",
+      "dueDate": "2025-07-10",
+      "category": "Personal"
+    }
+]

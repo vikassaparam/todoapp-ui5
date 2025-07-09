@@ -1,0 +1,20 @@
+/* Enter your custom styles here */
+.completedTask{
+    text-decoration: line-through;
+    color: grey;
+}
+
+/* Completed task styling using data attributes */
+[data-task-status="completed"] .sapMText,
+[data-task-status="completed"] .sapMLabel {
+    text-decoration: line-through;
+    color: grey;
+    opacity: 0.7;
+}
+
+/* Alternative: Direct class application */
+.taskCompleted {
+    text-decoration: line-through;
+    color: grey;
+    opacity: 0.7;
+}

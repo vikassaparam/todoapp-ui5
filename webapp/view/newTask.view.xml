@@ -1,0 +1,71 @@
+<mvc:View controllerName="com.practise.todolist.todolist.controller.newTask"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    
+    <Panel id="addNewTaskSection"
+     class = "sapUiSmallMarginTop"
+     expandable="true"
+     expanded="false"
+     headerText="Add New Task">
+
+     <VBox id="newTaskContainer" class="sapUiSmallMargin">
+        <HBox id="titleBox" alignItems="Center">
+            <Label id="newTaskTitleLabel" text="Title" 
+            width="100px" class="sapUiSmallMarginEnd"
+            design = "Bold"/>
+            <Input id="newTaskTitle" 
+                    placeholder="Enter task title"
+                    required="true"
+                    maxLength="50"
+                    width="400px"/>
+        </HBox>
+
+        <HBox id="descriptionBox" alignItems="Center" class="sapUiSmallMarginTop">
+            <Label id="newTaskDescriptionLabel" text="Description" width="100px" class="sapUiSmallMarginEnd"/>
+            <TextArea id="newTaskDescription"
+                    placeholder="Enter description"
+                    maxLength="150"
+                    width="400px"/>
+        </HBox>
+    
+        <HBox id="priorityBox" alignItems="Center" class="sapUiSmallMarginTop">
+            <Label id="newTaskPriorityLabel" text="Priority" width="100px" class="sapUiSmallMarginEnd"/>
+            <ComboBox id="newTaskPrioirty"
+                placeholder="Select Priority"
+                items="{valueHelp>/priorities}">
+                <core:Item id="priorityItem"
+                    key="{valueHelp>}"
+                    text="{valueHelp>}"/>
+            </ComboBox>
+        </HBox>
+
+        <HBox id="categoryBox" alignItems="Center" class="sapUiSmallMarginTop">
+            <Label id="newTaskCategoryLabel" text="Category" width="100px" class="sapUiSmallMarginEnd"/>
+            <ComboBox id="newTaskCategory"
+                placeholder="Select Category"
+                items="{valueHelp>/categories}">
+                <core:Item id="categoryItem"
+                    key="{valueHelp>}"
+                    text="{valueHelp>}"/>
+            </ComboBox>
+        </HBox>
+
+        <HBox id="dueDateBox" alignItems="Center" class="sapUiSmallMarginTop">
+            <Label id="newTaskDueDateLabel" text="Due Date" width="100px" class="sapUiSmallMarginEnd"/>
+            <DatePicker id="newTaskDueDate"
+                placeholder="Due Date"/>
+        </HBox>
+
+        <HBox id="addButtonBox" justifyContent="End" class="sapUiSmallMarginTop">
+            <Button id="addTaskButton"
+                type="Emphasized"
+                text="Add Task"
+                icon="sap-icon://add-activity"
+                press="onAddTask"/>
+        </HBox>
+    </VBox>
+    
+</Panel>
+       
+</mvc:View>

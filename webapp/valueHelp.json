@@ -1,0 +1,11 @@
+{
+  "categories": [
+    "Learning",
+    "Planning",
+    "Development",
+    "Personal",
+    "Work",
+    "Research"
+  ],
+  "priorities": ["Low", "Medium", "High"]
+}

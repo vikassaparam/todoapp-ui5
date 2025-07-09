@@ -1,0 +1,104 @@
+<mvc:View controllerName="com.practise.todolist.todolist.controller.toDoList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" 
+    class="sapUiResponsiveContentPadding">
+        <HBox id="headerSection"
+            justifyContent="SpaceBetween"
+            alignItems="Center" >
+            <HBox id="leftSpacer" class="sapUiSmallMarginTop" width="20%"></HBox>
+            <HBox id="titleContainer" justifyContent="Center" width="60%">
+                <Title id="headerTitle" text="My To-Do List" class="sapUiSmallMarginTop"/>
+            </HBox>
+            <HBox id="actionButtons"
+            justifyContent="End"
+            alignItems="Center"
+            class="sapUiTinyMarginEnd"
+            width="20%">
+                <Button id="filterButton" 
+                    class="sapUiTinyMarginEnd sapUiTinyMarginTop" 
+                    type="Transparent"
+                    icon="sap-icon://filter"/>
+                <Button id="sortButton" 
+                    icon="sap-icon://sort" 
+                    type="Transparent"
+                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+            </HBox>
+        </HBox>
+            
+        <HBox id="summary"
+            justifyContent="Center">
+            <Text id="summaryText"
+                text=" Total: 3 tasks | Pending: 2 | Completed: 1 "/>
+        </HBox>
+
+       <mvc:XMLView id="newTaskView" viewName="com.practise.todolist.todolist.view.newTask" />
+
+        <List 
+            id="toDoList"
+            items="{toDoItems>/}"
+            class="sapUiSmallMarginTop">
+
+            <CustomListItem 
+                id="toDoListItem">
+                <!-- counter="{toDoItems>id}"> -->
+                <HBox id="listItemBox" alignItems="Center" width="100%" 
+                justifyContent="SpaceBetween">
+                    <HBox id="checkBoxContainer" width="15px" justifyContent="Start">
+                        <CheckBox
+                        id="itemChecked"
+                        selected="{toDoItems>completed}"/>
+                    </HBox>
+                    <VBox id="itemDetails" width="40%" alignItems="Start" >
+                        <HBox id="itemTitleContainer" alignItems="Start">
+                            <Label id="titleLabel" text="Title:" 
+                                class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+                            <FormattedText id="itemTitle" 
+                                htmlText="{
+                                    parts: [
+                                        'toDoItems>title',
+                                        'toDoItems>completed'
+                                    ],
+                                    formatter: '.formatter.formatTaskTitle'
+                                }" 
+                                class="sapUiTinyMarginTop"/>
+                        </HBox>
+                        <Text id="itemDescription" 
+                            text="{toDoItems>description}"
+                            class="sapUiTinyMarginTop"/>
+                    </VBox>
+                    <VBox id="dueDateContainer" width="10%" justifyContent="Start">
+                        <Text id="itemDueDate" class="sapUiTinyMarginTop"
+                        text="{
+                            path: 'toDoItems>dueDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                style: 'medium',
+                                source: {
+                                    pattern: 'yyyy-MM-dd'
+                                }
+                            }
+                        }"/>
+                    </VBox>
+                    <HBox id="priorityContainer" width="60px" justifyContent="Center">
+                        <ObjectStatus 
+                        id="itemStatus"
+                        icon="{ path: 'toDoItems>priority',
+                                formatter : '.formatter.priorityIcon' }"
+                        state="{ path : 'toDoItems>priority',
+                                 formatter : '.formatter.priorityState' }"
+                        text="{toDoItems>priority}"/>
+                    </HBox>
+                    <HBox id="deleteContainer" width="20px" justifyContent="End" 
+                    class="sapUiTinyMarginEnd">
+                        <Button 
+                        id="itemDelete"
+                        type="Reject"
+                        icon="sap-icon://delete"/>
+                    </HBox>
+                </HBox>
+            </CustomListItem>
+        </List>
+    </Page>
+</mvc:View>
