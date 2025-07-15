@@ -38,10 +38,13 @@
         <List 
             id="toDoList"
             items="{toDoItems>/}"
-            class="sapUiSmallMarginTop">
+            class="sapUiSmallMarginTop"
+            >
 
             <CustomListItem 
-                id="toDoListItem">
+                id="toDoListItem"
+                press="onItemPress"
+                type="Active">
                 <!-- counter="{toDoItems>id}"> -->
                 <HBox id="listItemBox" alignItems="Center" width="100%" 
                 justifyContent="SpaceBetween">
@@ -95,6 +98,7 @@
                         <Button 
                         id="itemDelete"
                         type="Reject"
+                        press="onDeleteTask"
                         icon="sap-icon://delete"/>
                     </HBox>
                 </HBox>

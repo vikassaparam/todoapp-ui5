@@ -51,6 +51,10 @@
                 "settings": {
                     "bundleName": "com.practise.todolist.todolist.i18n.i18n"
                 }
+            },
+            "toDoItems":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri" : "toDo.json"
             }
         },
         "resources": {

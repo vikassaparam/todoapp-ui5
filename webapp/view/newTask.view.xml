@@ -31,7 +31,7 @@
     
         <HBox id="priorityBox" alignItems="Center" class="sapUiSmallMarginTop">
             <Label id="newTaskPriorityLabel" text="Priority" width="100px" class="sapUiSmallMarginEnd"/>
-            <ComboBox id="newTaskPrioirty"
+            <ComboBox id="newTaskPriority"
                 placeholder="Select Priority"
                 items="{valueHelp>/priorities}">
                 <core:Item id="priorityItem"
