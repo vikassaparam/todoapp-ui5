@@ -62,7 +62,7 @@
                 type="Emphasized"
                 text="Add Task"
                 icon="sap-icon://add-activity"
-                press="onAddTask"/>
+                press=".onAddTask"/>
         </HBox>
     </VBox>
     

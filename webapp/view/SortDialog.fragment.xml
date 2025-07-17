@@ -1,0 +1,40 @@
+<core:FragmentDefinition 
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="sortDialog"
+        title="Sort Tasks">
+
+        <content>
+            <form:SimpleForm id="sortBySection" title="Sort By">
+                <RadioButtonGroup id="sortByRadioButtonGroup">
+                    <RadioButton id="sortByTitle" text="Title" 
+                        select=".onSortByTitle"/>
+                    <RadioButton id="sortByDate" text="Due Date" 
+                        select=".onSortByDate"/>
+                    <RadioButton id="sortByPriority" text="Priority" 
+                        select=".onSortByPriority"/>
+                </RadioButtonGroup>
+            </form:SimpleForm>
+
+            <form:SimpleForm id="sortOrderSection" title="Order">
+                <SegmentedButton id="sortOrderSegmentedButton"
+                selectedKey="asc">
+                <items>
+                    <SegmentedButtonItem id="sortAscButtonItem" text="Ascending" key="asc"/>
+                    <SegmentedButtonItem id="sortDescButtonItem" text="Descending" key="desc"/>
+                </items>
+            </SegmentedButton>
+            </form:SimpleForm>
+       </content>
+       <buttons>
+            <Button id="closeSortButton"
+                text="Cancel"
+                press=".onCloseSortDialog"/>
+            <Button id="applySortButton"
+                text="Apply"
+                press=".onApplySort"
+                type="Emphasized"/>
+       </buttons>
+    </Dialog>
+</core:FragmentDefinition>

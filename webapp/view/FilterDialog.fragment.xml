@@ -1,0 +1,83 @@
+<core:FragmentDefinition 
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="filterDialog"
+        title="Filter Tasks"
+        contentWidth="30rem">
+
+        <content>
+            <form:SimpleForm id="statusFiltersSection" title="Status">
+                <SegmentedButton id="statusFilterSegmentedButton"
+                class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiSmallMarginEnd">     
+                <items>
+                    <SegmentedButtonItem id="showAllButtonItem" text="Show All" key="showAll"/>
+                    <SegmentedButtonItem id="showPending" text="Pending" key="showPending"/>
+                    <SegmentedButtonItem id="showCompleted" text="Completed" key="showCompleted"/>
+                </items>
+                </SegmentedButton>
+            </form:SimpleForm>
+
+            <form:SimpleForm id="categoryFiltersSection" title="Category">
+                <MultiComboBox id="categoryMultiSelect"
+                    placeholder="Select Categories"
+                    items="{valueHelp>/categories}">
+                    <core:Item id="categoryItemFilter"
+                        key="{valueHelp>}"
+                        text="{valueHelp>}"/>
+                </MultiComboBox>
+            </form:SimpleForm>
+            
+            <form:SimpleForm id="priorityFiltersSection" 
+             title="Priority">
+                <MultiComboBox id="priorityMultiSelect"
+                    placeholder="Select Priorities"
+                    items="{valueHelp>/priorities}">
+                    <core:Item id="priorityItemFilter"
+                        key="{valueHelp>}"
+                        text="{valueHelp>}"/>
+                </MultiComboBox>
+            </form:SimpleForm>
+
+            <form:SimpleForm id="dueDateFiltersSection"
+                title="Due Date Range">
+                <VBox id="dueDateFilterBox" alignItems="Stretch">
+                <HBox id="fromDueDateFilerBox" alignItems="Center">
+                    <Label id="fromDueDateLabel" text="From:" class="sapUiSmallMarginEnd" width="40px"/>
+                    <DatePicker id="fromDueDatePicker"
+                        placeholder="From Due Date"/>
+                </HBox>
+                <HBox id="toDueDateFilerBox" alignItems="Center">
+                    <Label id="toDueDateLabel" text="To:" class="sapUiSmallMarginEnd" width="40px"/>
+                    <DatePicker id="toDueDatePicker"
+                        placeholder="From Due Date"/>
+                </HBox>
+
+                <SegmentedButton id="dateFilterSegmentedButton"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+                    <items>
+                        <SegmentedButtonItem id="allTime" text="All" key="allTime"/>
+                        <SegmentedButtonItem id="today" text="Today" key="today"/>
+                        <SegmentedButtonItem id="thisWeek" text="This Week" key="thisWeek"/>
+                        <SegmentedButtonItem id="overdue" text="OverDue" key = "overdue"/>
+                    </items>
+                </SegmentedButton>
+                </VBox>
+            </form:SimpleForm>
+       </content>
+
+       <buttons>
+            <Button id="resetFilterButton"
+                text="Clear All"
+                press=".onResetFilters"
+                type="Transparent"/>
+            <Button id="closeFilterButton"
+                text="Cancel"
+                press=".onCloseFilterDialog"/>
+            <Button id="applyFilterButton"
+                text="Apply"
+                press=".onApplyFilter"
+                type="Emphasized"/>
+       </buttons>
+    </Dialog>
+</core:FragmentDefinition>

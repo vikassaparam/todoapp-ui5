@@ -8,11 +8,8 @@ sap.ui.define([
 
     return Controller.extend("com.practise.todolist.todolist.controller.newTask", {
         onInit() {
-            const oModel = new JSONModel("../toDo.json", true);
-            const oValueHelpModel = new JSONModel("../valueHelp.json");
-            const oView = this.getView();
-            oView.setModel(oModel, "toDolist");
-            oView.setModel(oValueHelpModel, "valueHelp");
+            // Models are already available from manifest.json
+            // No need to create them manually
         },
 
         onAddTask(oEvent){
@@ -42,21 +39,47 @@ sap.ui.define([
                 const sTaskDescription = oView.byId("newTaskDescription").getValue();
                 const sTaskPriority = oView.byId("newTaskPriority").getProperty("value");
                 const sTaskCategory = oView.byId("newTaskCategory").getProperty("value");
-                const dDueDate = oView.byId("newTaskDueDate").getValue();
-                aTasks.push({ title : sTaskTitle,
+                const sDueDate = this._formatDateToString(dDueDate);
+                aTasks.push({ id : this._generateNewId(aTasks),
+                              title : sTaskTitle,
                               description : sTaskDescription,
+                              completed: false,
                               priority : sTaskPriority,
                               category : sTaskCategory,
-                              dueDate : dDueDate });
+                              dueDate : sDueDate });
                 oDataModel.setData(aTasks);
                 MessageToast.show("Task has been added!");
                 oView.byId("newTaskTitle").setValue("");
                 oView.byId("newTaskDescription").setValue("");
                 oView.byId("newTaskPriority").setSelectedItem(null);
                 oView.byId("newTaskCategory").setSelectedItem(null);
-                oView.byId("newTaskDueDate").setDateValue(null)
-                
+                oView.byId("newTaskDueDate").setDateValue(null);
+                    
+                // Update the summary by calling the toDoList controller method
+                this._updateSummaryInParent();
             }
-        }
+        },
+
+        _generateNewId(aTasks) {
+            // Generate a unique ID that's higher than any existing ID
+            if (!Array.isArray(aTasks) || aTasks.length === 0) {
+                return 1; // If no tasks, start with ID 1
+            }
+            return aTasks.length + 1;
+        },
+
+        _updateSummaryInParent() {
+            // Use event bus to notify the toDoList controller
+            const oEventBus = this.getOwnerComponent().getEventBus();
+            oEventBus.publish("taskChannel", "taskAdded", {});
+        },
+
+        _formatDateToString(oDate) {
+            // Format date to yyyy-MM-dd format to match JSON data
+            const iYear = oDate.getFullYear();
+            const iMonth = String(oDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const iDay = String(oDate.getDate()).padStart(2, '0');
+            return `${iYear}-${iMonth}-${iDay}`;
+        },
     });
 });

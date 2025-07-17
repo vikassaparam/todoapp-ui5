@@ -55,6 +55,10 @@
             "toDoItems":{
                 "type": "sap.ui.model.json.JSONModel",
                 "uri" : "toDo.json"
+            },
+            "valueHelp":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri" : "valueHelp.json"
             }
         },
         "resources": {

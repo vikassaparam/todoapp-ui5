@@ -1,0 +1,86 @@
+<core:FragmentDefinition 
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="editTaskDialog"
+            title="Edit Task">
+        <content>
+        <form:SimpleForm id="EditTaskForm"  >
+            <Label id="titleLabelForm" text="Title"/>
+            <Input id="titleInputForm"
+                    value="{/task/title}"
+                    valueState="{
+                        path: '/task/title',
+                        formatter: '.formatter.titleTaskValueState'
+                    }"
+                    valueStateText="{
+                        path: '/task/title',
+                        formatter: '.formatter.titleTaskValueStateText'
+                    }"
+                    required="true"
+                    maxLength="50"
+                    width="400px"/>
+            <Label id="descriptionLabelForm" text="Description"/>
+            <TextArea id="descriptionTextForm"
+                    placeholder="Enter description"
+                    value="{/task/description}"
+                    maxLength="150"
+                    width="400px"/>
+            <Label id="priorityLabelForm" text="Priority"/>
+            <ComboBox id="priorityBoxForm"
+                placeholder="Select Priority"
+                items="{valueHelp>/priorities}"
+                width="200px"
+                value="{/task/priority}">
+                <core:Item id="priorityItemForm"
+                    key="{valueHelp>}"
+                    text="{valueHelp>}"/>
+            </ComboBox>
+
+            <Label id="categoryLabelForm" 
+                text="Category" 
+                width="100px"/>
+            <ComboBox id="categoryBoxForm"
+                placeholder="Select Category"
+                items="{valueHelp>/categories}"
+                width="200px"
+                value="{/task/category}">
+                <core:Item id="categoryItemForm"
+                    key="{valueHelp>}"
+                    text="{valueHelp>}"/>
+            </ComboBox>
+
+            <Label id="dueDateLabelForm" 
+                text="Due Date" 
+                width="100px"/>
+            <DatePicker id="dueDateForm"
+                placeholder="Due Date"
+                required="true"
+                width="200px"
+                value="{/task/dueDate}"
+                valueState="{
+                    path: '/task/dueDate',
+                    formatter: '.formatter.dueDateValueState'
+                }"
+                valueStateText="{
+                    path: '/task/dueDate',
+                    formatter : '.formatter.dueDateValueStateText'
+                }"/>
+        </form:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button id="updateTaskButton"
+                text="Update Task"
+                type="Accept"
+                press=".onUpdateTask"/>
+        </beginButton>
+
+        <endButton>
+            <Button id="cancelButton"
+            text="Cancel"
+            type="Reject"
+            press=".onCloseDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

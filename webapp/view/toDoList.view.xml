@@ -19,18 +19,20 @@
                 <Button id="filterButton" 
                     class="sapUiTinyMarginEnd sapUiTinyMarginTop" 
                     type="Transparent"
-                    icon="sap-icon://filter"/>
+                    icon="sap-icon://filter"
+                    press=".onFilter"/>
                 <Button id="sortButton" 
                     icon="sap-icon://sort" 
                     type="Transparent"
-                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+                    class="sapUiTinyMarginEnd sapUiTinyMarginTop"
+                    press=".onSort"/>
             </HBox>
         </HBox>
             
         <HBox id="summary"
             justifyContent="Center">
             <Text id="summaryText"
-                text=" Total: 3 tasks | Pending: 2 | Completed: 1 "/>
+                text="Total: {summary>/total} tasks | Pending: {summary>/pending} | Completed: {summary>/completed}"/>
         </HBox>
 
        <mvc:XMLView id="newTaskView" viewName="com.practise.todolist.todolist.view.newTask" />
@@ -43,7 +45,7 @@
 
             <CustomListItem 
                 id="toDoListItem"
-                press="onItemPress"
+                press=".onItemPress"
                 type="Active">
                 <!-- counter="{toDoItems>id}"> -->
                 <HBox id="listItemBox" alignItems="Center" width="100%" 
@@ -51,7 +53,8 @@
                     <HBox id="checkBoxContainer" width="15px" justifyContent="Start">
                         <CheckBox
                         id="itemChecked"
-                        selected="{toDoItems>completed}"/>
+                        selected="{toDoItems>completed}"
+                        select=".onTaskStatusChange"/>
                     </HBox>
                     <VBox id="itemDetails" width="40%" alignItems="Start" >
                         <HBox id="itemTitleContainer" alignItems="Start">
